@@ -1,6 +1,6 @@
 # Lista de Exercícios - Aprendizado Não Supervisionado de Máquinas (PPGEEC2325)
 
-Este repositório contém as soluções para a primeira lista de exercícios da disciplina **Aprendizado Não Supervisionado de Máquinas**, ministrada pelo Professor Luiz Affonso Guedes no período 2025.2.
+Soluções para a primeira lista de exercícios da disciplina **Aprendizado Não Supervisionado de Máquinas**, ministrada pelo Professor Luiz Affonso Guedes no período 2025.2.
 
 ## Descrição da Lista
 
