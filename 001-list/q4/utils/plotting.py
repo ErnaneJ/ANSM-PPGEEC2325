@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 
 def plot_histograms(samples, sample_sizes, save_path=None):
     """
@@ -24,7 +23,6 @@ def plot_histograms(samples, sample_sizes, save_path=None):
         axes[i].set_xlabel('X')
         axes[i].set_ylabel('Densidade')
         
-        # Adicionar linhas para média teórica (0) e desvios padrão
         axes[i].axvline(0, color='red', linestyle='--', label='Média teórica (0)')
         axes[i].axvline(1, color='green', linestyle=':', label='+1σ teórico')
         axes[i].axvline(-1, color='green', linestyle=':', label='-1σ teórico')
@@ -48,7 +46,6 @@ def plot_convergence(running_means, running_variances, save_path=None):
     """
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
     
-    # Plot convergência da média
     ax1.plot(running_means, 'b-', alpha=0.7, label='Média acumulada')
     ax1.axhline(0, color='r', linestyle='--', label='Média teórica (0)')
     ax1.set_xlabel('Tamanho da amostra')
@@ -57,7 +54,6 @@ def plot_convergence(running_means, running_variances, save_path=None):
     ax1.legend()
     ax1.grid(True)
     
-    # Adicionar pontos de interesse
     points_of_interest = [10, 100, 1000, 10000]
     for point in points_of_interest:
         if point < len(running_means):
@@ -65,7 +61,6 @@ def plot_convergence(running_means, running_variances, save_path=None):
             ax1.annotate(f'n={point}', (point, running_means[point-1]), 
                         xytext=(10, 10), textcoords='offset points')
     
-    # Plot convergência da variância
     ax2.plot(running_variances, 'g-', alpha=0.7, label='Variância acumulada')
     ax2.axhline(1, color='r', linestyle='--', label='Variância teórica (1)')
     ax2.set_xlabel('Tamanho da amostra')
@@ -74,7 +69,6 @@ def plot_convergence(running_means, running_variances, save_path=None):
     ax2.legend()
     ax2.grid(True)
     
-    # Adicionar pontos de interesse
     for point in points_of_interest:
         if point < len(running_variances):
             ax2.plot(point, running_variances[point-1], 'ro')
@@ -99,7 +93,6 @@ def plot_zoom_convergence(running_means, running_variances, save_path=None):
     """
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
     
-    # Zoom da convergência da média (primeiros 1000 pontos)
     ax1.plot(running_means[:1000], 'b-', alpha=0.7, label='Média acumulada')
     ax1.axhline(0, color='r', linestyle='--', label='Média teórica (0)')
     ax1.set_xlabel('Tamanho da amostra')
@@ -108,7 +101,6 @@ def plot_zoom_convergence(running_means, running_variances, save_path=None):
     ax1.legend()
     ax1.grid(True)
     
-    # Zoom da convergência da variância (primeiros 1000 pontos)
     ax2.plot(running_variances[:1000], 'g-', alpha=0.7, label='Variância acumulada')
     ax2.axhline(1, color='r', linestyle='--', label='Variância teórica (1)')
     ax2.set_xlabel('Tamanho da amostra')
