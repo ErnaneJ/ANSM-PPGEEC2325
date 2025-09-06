@@ -4,10 +4,6 @@ from utils.distributions import generate_uniform_sums, calculate_statistics
 from utils.plotting import plot_distributions, plot_convergence
 
 def question_1():
-    """
-    Resolve a Questão 1 da lista de exercícios
-    """
-
     n_values = range(1, 13)
     num_samples = 10000
     output_dir = 'outputs'
