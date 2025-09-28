@@ -7,38 +7,33 @@ Analisar o efeito de diferentes transformações lineares e rotações em pares 
 ## Fundamentação Teórica
 
 Dadas duas variáveis aleatórias normais independentes:
-$$
-  X \approx N(0, 1) \newline
-  Y \approx N(0, 1)
-$$
+
+$$ X \approx N(0, 1) $$
+$$ Y \approx N(0, 1) $$
 
 Temos que:
-$$
-  E[X] = E[Y] = 0 \newline
-  Var[X] = Var[Y] = 1 \newline
-  Cov(X,Y) = 0 \text{ (devido à independência)} \newline
-  Corr(X,Y) = 0 \text{ (devido à independência)} \newline
-$$
+
+$$ E[X] = E[Y] = 0 $$
+$$ Var[X] = Var[Y] = 1 $$
+$$ Cov(X,Y) = 0 \text{ (devido à independência)} $$
+$$ Corr(X,Y) = 0 \text{ (devido à independência)} $$
 
 Para transformações lineares da forma $W = aX + b$ e $Z = cY + d$:
 
-$$
-  E[W] = a \cdot E[X] + b = b \newline
-  E[Z] = c \cdot E[Y] + d = d \newline
-  Cov(W,Z) = a \cdot c \cdot Cov(X, Y) = 0 \newline
-  Corr(W,Z) = 0
-$$
+$$ E[W] = a \cdot E[X] + b = b $$
+$$ E[Z] = c \cdot E[Y] + d = d $$
+$$ Cov(W,Z) = a \cdot c \cdot Cov(X, Y) = 0 $$
+$$ Corr(W,Z) = 0 $$
 
 Para rotações com ângulo θ:
-$$
-  W = 2 \cdot cos(θ) \cdot X - sin(θ) \cdot Y \newline
-  Z = 2 \cdot sin(θ) \cdot X + cos(θ) \cdot Y
-$$
+
+$$ W = 2 \cdot cos(θ) \cdot X - sin(θ) \cdot Y $$
+$$ Z = 2 \cdot sin(θ) \cdot X + cos(θ) \cdot Y $$
 
 ## Metodologia
 
 1. **Geração de dados**: 5.000 amostras de $X \approx Y \approx N(0, 1)$
-2. **Aplicação de transformações**: 11 diferentes transformações (1.a a 1.k)
+2. **Aplicação de transformações**: **11 diferentes** transformações (`1.a` à `1.k`)
 3. **Análise estatística**: Para cada par $(W,Z)$ resultante, calculou-se:
    - Coeficiente de correlação ($Corr$)
    - Covariância ($Cov$)
@@ -66,17 +61,17 @@ python main.py
 
 | Questão | Transformação | Correlação | Covariância |
 |---------|---------------|------------|-------------|
-| 1.a | Original X e Y | -0.0018 | -0.0018 |
-| 1.b | W = 2X + 5, Z = Y | -0.0018 | -0.0036 |
-| 1.c | W = 2X + 5, Z = Y + 3 | -0.0018 | -0.0036 |
-| 1.d | W = 2(X + 5), Z = Y + 3 | -0.0018 | -0.0036 |
-| 1.e | Rotação θ = 0 | -0.0018 | -0.0036 |
-| 1.f | Rotação θ = π/4 | 0.5910 | 1.4755 |
-| 1.g | Rotação θ = π/2 | 0.0018 | 0.0036 |
-| 1.h | Rotação θ = 3π/4 | -0.5910 | -1.4755 |
-| 1.i | Rotação com translação θ = π/4 | 0.5910 | 1.4755 |
-| 1.j | Rotação após transformação linear + translação θ = π/4 | 0.5910 | 1.4755 |
-| 1.k | Rotação após transformação linear + translação θ = 3π/4 | -0.5910 | -1.4755 |
+| 1.a | Original $X$ e $Y$ | $-0.0018$ | $-0.0018$ |
+| 1.b | $W = 2X + 5$, $Z = Y$ | $-0.0018$ | $-0.0036$ |
+| 1.c | $W = 2X + 5$, $Z = Y + 3$ | $-0.0018$ | $-0.0036$ |
+| 1.d | $W = 2(X + 5)$, $Z = Y + 3$ | $-0.0018$ | $-0.0036$ |
+| 1.e | Rotação $θ = 0$ | $-0.0018$ | $-0.0036$ |
+| 1.f | Rotação $θ = \frac{\pi}{4}$ | $0.5910$ | $1.4755$ |
+| 1.g | Rotação $θ = \frac{\pi}{2}$ | $0.0018$ | $0.0036$ |
+| 1.h | Rotação $θ = \frac{3\pi}{4}$ | $-0.5910$ | $-1.4755$ |
+| 1.i | Rotação com translação $θ = \frac{\pi}{4}$ | $0.5910$ | $1.4755$ |
+| 1.j | Rotação após transformação linear + translação $θ = \frac{\pi}{4}$ | $0.5910$ | $1.4755$ |
+| 1.k | Rotação após transformação linear + translação $θ = \frac{3\pi}{4}$ | $-0.5910$ | $-1.4755$ |
 
 ### Análise dos Resultados
 
@@ -94,16 +89,13 @@ Correlação próxima de zero em todos os casos pois transformações lineares q
 
 #### Casos 1.f e 1.h: Introdução de Correlação
 
-Correlação significativa ($|ρ| \approx 0.59$) para $θ = π/4$ e $θ = 3π/4$. Rotações que misturam $X$ e $Y$ criam dependência entre $W$ e $Z$. A covariância teórica é: 
+Correlação significativa ($|ρ| \approx 0.59$) para $θ = \frac{\pi}{4}$ e $θ = \frac{3\pi}{4}$. Rotações que misturam $X$ e $Y$ criam dependência entre $W$ e $Z$. A covariância teórica é:
 
-$$
-  Cov(W,Z) = 4·cos(θ)·sin(θ)·Var[X] - 2·cos²(θ)·Cov(X,Y) + 2·sin²(θ)·Cov(Y,X) - sin(θ)·cos(θ)·Var[Y]
-$$
+$$ Cov(W,Z) = 4·cos(θ)·sin(θ)·Var[X] - 2·cos²(θ)·Cov(X,Y) + 2·sin²(θ)·Cov(Y,X) - sin(θ)·cos(θ)·Var[Y] $$
 
-Simplificando com $Cov(X,Y)=0$, $Var[X]=Var[Y]=1$:
-$$
-  Cov(W,Z) = 4·cos(θ)·sin(θ) - sin(θ)·cos(θ) = 3·cos(θ)·sin(θ)
-$$
+Simplificando com $ Cov(X, Y) = 0 $, $ Var[X] = Var[Y] = 1 $:
+
+$$ Cov(W,Z) = 4·cos(θ)·sin(θ) - sin(θ)·cos(θ) = 3·cos(θ)·sin(θ) $$
 
 |   |**1.f e 1.h: Introdução de Correlação**|   |
 |:-:|:----------------------------------------:|:-:|
@@ -123,8 +115,8 @@ Translações não afetam correlação/covariância pois $Cov(W+b, Z+d) = Cov(W,
 
 ## Conclusões
 
-1. **Transformações lineares simples** (1.a-1.e) que não misturam X e Y preservam a independência, resultando em correlação/covariância próximas de zero.
-2. **Rotações** (1.f, 1.g, 1.h) que misturam X e Y podem introduzir correlação entre as variáveis transformadas, dependendo do ângulo de rotação.
+1. **Transformações lineares simples** (`1.a` à `1.e`) que não misturam $X$ e $Y$ preservam a independência, resultando em correlação/covariância próximas de zero.
+2. **Rotações** (`1.f`, `1.g`, `1.h`) que misturam $X$ e $Y$ podem introduzir correlação entre as variáveis transformadas, dependendo do ângulo de rotação.
 3. **Translações** (adição de constantes) não afetam correlação ou covariância, confirmando a propriedade de invariância dessas medidas a deslocamentos.
 
 As imagens completas para todos os casos estão disponíveis na pasta `images/`.
